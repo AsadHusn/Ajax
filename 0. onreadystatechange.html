@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+	<h1>Ajax</h1>
+	<button id="btn">on ready state change</button>
+
+	<script>
+		document.getElementById("btn").addEventListener('click', ()=>{
+			req = new XMLHttpRequest();
+			console.log("readyState", req.readyState)
+			req.open("GET", "data.txt")
+			req.onreadystatechange = function(){
+				console.log("readyState", this.readyState)
+			}
+			req.send();
+		})
+	</script>
+</body>
+</html>

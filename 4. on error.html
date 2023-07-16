@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+	<h1>Ajax</h1>
+	<button id="btn">on error</button>
+
+	<script>
+		document.getElementById("btn").addEventListener('click', ()=>{
+			req = new XMLHttpRequest()
+			req.open("GET", "data.txt")
+			// error in the server
+			req.onerror = function(){
+				console.log("readyState", this.readyState)
+			}
+			req.send();
+		})
+	</script>
+</body>
+</html>

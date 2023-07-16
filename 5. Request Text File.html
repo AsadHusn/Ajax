@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Ajax</h1>
+    <h2>Request Text File</h2>
+    <button type="button" onclick="loadDoc()">Change Content</button>
+    <div id="demo"></div>
+
+  <script>
+    function loadDoc(){
+      req = new XMLHttpRequest();
+      req.onload = function(){
+          div = document.getElementById("demo")
+          div.insertAdjacentHTML('beforeend', "<br>"+this.responseText)
+      }
+      req.open("GET", "data.txt");
+      req.send();
+    }
+  </script>
+
+</body>
+</html>

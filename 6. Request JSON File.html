@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+	<h1>Ajax</h1>
+	<h2>Request JSON File</h2>
+	<button id="btn">Get Users</button>
+	<ul id="demo"></ul>
+
+	<script>
+		document.getElementById("btn").addEventListener('click', ()=>{
+			req = new XMLHttpRequest()
+			req.open("GET", "data.json")
+			req.onload = function(){
+				console.log(this.responseText)
+				users = JSON.parse(this.responseText)
+				for(user of users){
+					ul = document.createElement('ul')
+					document.body.appendChild(ul)
+					for(i in user){
+						li = document.createElement('li')
+						li.innerText = user[i]
+						ul.appendChild(li)
+					}
+				}
+			}
+			req.send()
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<h1>AJAX and JSON</h1>
+	<button>Fetch info</button>
+
+	<div></div>
+
+	<script type="text/javascript">
+		div = document.querySelector("div")
+		btn = document.getElementsByTagName('button')[0];
+		btn.addEventListener('click', function(){
+			req = new XMLHttpRequest()
+			req.open("GET", "https://dummyjson.com/products/1")
+			req.onload = ()=>{
+				data = JSON.parse(req.responseText)
+				console.log(data)
+				renderHTML(data)
+			}
+			req.send()
+		})
+		
+		
+		function renderHTML(data){
+			for(let i in data){
+				div.insertAdjacentHTML('beforeend', "<p>"+i+ ":\t" + data[i] +"</p>")
+			}
+		}
+
+	</script>
+
+</body>
+</html>
+
+

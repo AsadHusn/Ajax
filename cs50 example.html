@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ajax example</title>
+</head>
+<body>
+	<h1>Ajax Test</h1>
+	<p id="demo">Information goes here</p>
+	
+	<select name="staff" onchange="info(this.value)">
+		<option value="">Select someone</option>
+		<option value="asad">Asad</option>
+		<option value="david">David</option>
+	</select>
+	
+	<script>
+		function info(name){
+			if(name == '')
+				return
+			ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState == 4 && ajax.status == 200){
+					document.getElementById("demo").innerHTML = this.responseText;
+				}	
+			}
+			ajax.open('GET', 'info.html', true)
+			ajax.send()
+		}
+	</script>
+</body>
+</html>

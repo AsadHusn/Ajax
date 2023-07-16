@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2>The XMLHttpRequest Object</h2>
+  <p id="demo"></p>
+
+  <script>
+    req = new XMLHttpRequest();
+    req.onload = function(){
+
+      xmlDoc = this.responseXML;
+
+      x = xmlDoc.getElementsByTagName("ARTIST");
+      
+      let txt = "";
+      for (let i = 0; i < x.length; i++) {
+        txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+      }
+      document.getElementById("demo").innerHTML = this.getAllResponseHeaders();
+    }
+    req.open("GET", "data.txt", false);
+    req.send();
+  </script>
+
+</body>
+</html>

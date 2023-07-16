@@ -1,0 +1,8 @@
+arrow function not work as expected
+for example
+req.onload = ()=>{
+        console.log(this.responseText)
+    }
+
+in this scenario arrow function will not receive any object
+so "this" keyword not work
